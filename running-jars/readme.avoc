@@ -1,0 +1,20 @@
+= Create Dockerfile in root folder of project and refer following command
+
+```
+FROM openjdk:11-jre-slim
+EXPOSE 8761
+ADD /target/eureka-server-0.0.1-SNAPSHOT.jar eureka-server-0.0.1-SNAPSHOT.jar
+
+
+ENTRYPOINT ["java","-jar","eureka-server-0.0.1-SNAPSHOT.jar"]
+
+```
+
+=At root folder run following command
+
+```
+mvn clean install
+docker build -f Dockerfile -t eureka:1
+docker container run -d -p 8761:8761 --name eureka eureka:1
+```
+
