@@ -1,0 +1,12 @@
+== Pull the image : docker pull mysql
+
+```
+Run the container: 
+docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=root -d mysql
+
+Run Sql using following command: 
+winpty docker exec -it mysql-db mysql -uroot -p
+
+```
+
+
