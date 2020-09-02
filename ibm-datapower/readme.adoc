@@ -1,0 +1,38 @@
+== Pull the image : docker pull ibmcom/datapower
+
+=== Switch to the Windows Container, it will create some directories in C:\ProgramData\Docker\ directory. Create one directory 'local' here.
+
+=== Now switch again to the Linux container. 
+
+=== GO to the docker settings. Increase memory to 4096 MB (Datapower requires 5 GB RAM)
+
+=== Change directory to C:\ProgramData\Docker
+
+```
+Run the container: 
+	winpty docker run -it \
+	  -v $PWD/config:/drouter/config \
+	  -v $PWD/local:/drouter/local \
+	  -e DATAPOWER_ACCEPT_LICENSE=true \
+	  -e DATAPOWER_INTERACTIVE=true \
+	  -e DATAPOWER_WORKER_THREADS=4 \
+	  -p 9099:9099 \
+	  --name datapower-container \
+	  ibmcom/datapower:7.6.0.15.309139
+ 
+	  
+	It will prompt for username and password
+		login: admin
+		Password: admin
+		
+	Now, we are in Datapower console
+		type con
+		type web-mgmt 0 9099
+
+
+
+```
+
+=== Open https://localhost:9099 and give username= admin and password=admin
+
+
