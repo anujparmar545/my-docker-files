@@ -2,10 +2,11 @@
 
 ```
 Run the container: 
-docker run --name mysql-db -e MYSQL_ROOT_PASSWORD=root -d mysql
+Change the dir: C:\ProgramData\Docker\volumes
+docker run -v $PWD/mysqldata:/var/lib/mysql --name mysql-db -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql
 
 Run Sql using following command: 
-winpty docker exec -it mysql-db mysql -uroot -p
+winpty docker exec -it mysql-db mysql -uroot -proot
 
 ```
 
